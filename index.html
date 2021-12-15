@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .i-phone-frem {
+        width: 18rem;
+        height: 33rem;
+        border-radius: 23px;
+        background: black;
+        border: 11px solid rgb(26, 26, 26);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .i-phone-frem::before {
+        content: "";
+        position: absolute;
+        top: 9rem;
+        right: -16px;
+        width: 5px;
+        height: 47px;
+        background: rgb(26, 26, 26);
+        border-radius: 0px 28px 28px 0px;
+    }
+
+    .i-phone-frem::after {
+        content: "";
+        position: absolute;
+        top: 3rem;
+        right: -16px;
+        width: 5px;
+        height: 85px;
+        background: rgb(26, 26, 26);
+        border-radius: 0px 28px 28px 0px;
+    }
+
+    .came {
+        width: 2rem;
+        position: absolute;
+        top: 6px;
+    }
+
+    .circle-svg circle {
+        fill: none;
+    }
+
+    .circle-svg .circle1 {
+        stroke-width: 20px;
+        stroke-dashoffset: 0;
+        stroke: #181818;
+    }
+
+    .circle-svg .circle2 {
+        stroke: url(#GradientColor);
+        stroke-width: 20px;
+        stroke-dasharray: 472;
+        stroke-dashoffset: 472;
+        animation: cirle 2s linear forwards;
+    }
+
+    @keyframes cirle {
+        100% {
+            stroke-dashoffset: 165;
+        }
+    }
+
+    .flash {
+        width: 75px;
+        position: absolute;
+    }
+
+    #number {
+        position: absolute;
+        bottom: 33px;
+        font-size: larger;
+        font-family: cursive;
+        font-weight: 600;
+        color: #4E4E4E;
+    }
+</style>
+
+<body>
+    <div class="i-phone-frem">
+        <img src="./cam.png" alt="" class="came">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px" class="circle-svg">
+            <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#ff0032" />
+                    <stop offset="100%" stop-color="#ff8c00" />
+                </linearGradient>
+            </defs>
+            <circle cx="80" cy="80" r="70" stroke-linecap="round" class="circle1" />
+            <circle cx="80" cy="80" r="70" stroke-linecap="round" class="circle2" />
+        </svg>
+        <img src="./flash.png" alt="" class="flash">
+        <div id="number">
+            0%
+        </div>
+    </div>
+</body>
+<script>
+    const number = document.querySelector("#number");
+    let conter = 0;
+    setInterval(() => {
+        if (conter == 65) {
+            clearInterval();
+        } else {
+            conter += 1;
+            number.textContent = conter + "% Charged";
+        }
+    }, 30);
+</script>
+
+</html>
